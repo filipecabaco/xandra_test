@@ -5,9 +5,10 @@ To setup run the cluster in Docker:
 
 And then run it with:
 1. `iex -S mix`
-2. `XandraTest.run`
+2. `XandraTest.run_cluster` to test connection to cluster
+3. `XandraTest.run_single` to test connection to single node
 
-The current output is:
+Single setup works as expected but in clustered connections the current output is:
 
 ```
 ** (EXIT from #PID<0.175.0>) an exception was raised:                                                                                                                                    ** (FunctionClauseError) no function clause matching in Xandra.Cluster.handle_call/3                                                                                                     (xandra) lib/xandra/cluster.ex:162: Xandra.Cluster.handle_call({:checkout, #Reference<0.4287448014.3069706241.44570>, true, 15000}, {#PID<0.175.0>, #Reference<0.4287448014.3069706241.44571>}, %Xandra.Cluster{load_balancing: :random, node_refs: [{#Reference<0.4287448014.3069706241.44561>, nil}, {#Reference<0.4287448014.3069706241.44564>, nil}, {#Reference<0.4287448014.3069706241.44567>, nil}], options: [prepared_cache: #Reference<0.4287448014.3069837313.44560>, idle_timeout: 30000, pool_size: 1], pool_module: DBConnection.Connection, pool_supervisor: #PID<0.196.0>, pools: %{}})
