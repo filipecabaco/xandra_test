@@ -6,6 +6,7 @@ defmodule XandraTest do
       underlying_pool: DBConnection.Poolboy,
       pool_size: 10,
     ])
+    :timer.sleep(1000)
     conn
   end
 
