@@ -1,0 +1,3 @@
+%{"connection": {:hex, :connection, "1.0.4", "a1cae72211f0eef17705aaededacac3eb30e6625b04a6117c1b2db6ace7d5976", [:mix], [], "hexpm"},
+  "db_connection": {:hex, :db_connection, "1.1.2", "2865c2a4bae0714e2213a0ce60a1b12d76a6efba0c51fbda59c9ab8d1accc7a8", [:mix], [{:connection, "~> 1.0.2", [hex: :connection, repo: "hexpm", optional: false]}, {:poolboy, "~> 1.5", [hex: :poolboy, repo: "hexpm", optional: true]}, {:sbroker, "~> 1.0", [hex: :sbroker, repo: "hexpm", optional: true]}], "hexpm"},
+  "xandra": {:hex, :xandra, "0.8.0", "91637adcbd0cd3c238d1c44ff62c62f15609f2a0976ffb26a9071c20de234049", [:mix], [{:db_connection, "~> 1.0", [hex: :db_connection, repo: "hexpm", optional: false]}], "hexpm"}}
