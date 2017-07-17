@@ -4,7 +4,7 @@ defmodule XandraTest do
     {:ok, conn} = Xandra.start_link([
       nodes: ["localhost:9042"],
       pool: Xandra.Cluster,
-      underlying_pool: DBConnection.Connection,
+      underlying_pool: DBConnection.Poolboy,
       pool_size: 10,
     ])
 

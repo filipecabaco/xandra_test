@@ -15,6 +15,7 @@ defmodule XandraTest.Mixfile do
   end
 
   defp deps do
-    [{:xandra, "~> 0.8.0"}]
+    [{:xandra, "~> 0.8.0"},
+     {:poolboy, "~> 1.5"}]
   end
 end
