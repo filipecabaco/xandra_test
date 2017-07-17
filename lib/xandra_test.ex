@@ -7,7 +7,7 @@ defmodule XandraTest do
       underlying_pool: DBConnection.Poolboy,
       pool_size: 10,
     ])
-    Xandra.execute(conn, "CREATE KEYSPACE IF NOT EXISTS potatoes WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor' : 1}", [], [pool: Xandra.Cluster])
+    Xandra.execute(conn, "USE system", [], [pool: Xandra.Cluster])
   end
 
   def run_single do
@@ -16,6 +16,6 @@ defmodule XandraTest do
       nodes: ["localhost:9042"]
     ])
 
-    Xandra.execute(conn, "CREATE KEYSPACE IF NOT EXISTS potatoes WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor' : 1}")
+    Xandra.execute(conn, "USE system")
   end
 end
