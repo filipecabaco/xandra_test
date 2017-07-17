@@ -1,21 +1,32 @@
 defmodule XandraTest do
-  def run_cluster do
-    Application.ensure_all_started(:xandra)
+  def conn_cluster do
     {:ok, conn} = Xandra.start_link([
-      nodes: ["localhost:9042", "localhost:9043", "localhost:9044"],
+      nodes: ["localhost:9042", "localhost:9142", "localhost:9242"],
       pool: Xandra.Cluster,
       underlying_pool: DBConnection.Poolboy,
       pool_size: 10,
     ])
-    Xandra.execute(conn, "USE system", [], [pool: Xandra.Cluster])
+    conn
   end
 
-  def run_single do
-    Application.ensure_all_started(:xandra)
+  def conn_single do
     {:ok, conn} = Xandra.start_link([
       nodes: ["localhost:9042"]
     ])
-
-    Xandra.execute(conn, "USE system")
+    conn
   end
+
+  def query_cluster(conn) do
+    {:ok, stm} = Xandra.prepare(conn, "USE system", [pool: Xandra.Cluster])
+    Xandra.execute(conn, stm, [], [pool: Xandra.Cluster])
+  end
+
+  def query_single(conn) do
+    {:ok, stm} = Xandra.prepare(conn, "USE system")
+    Xandra.execute(conn, stm, [], [])
+  end
+
+
+  def run(:single), do: conn_single |> query_single
+  def run(:cluster), do: conn_cluster |> query_cluster
 end
